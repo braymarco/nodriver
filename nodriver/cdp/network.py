@@ -1603,7 +1603,7 @@ class Cookie:
                 else None
             ),
             partition_key=(
-                CookiePartitionKey.from_json(json["partitionKey"])
+                (CookiePartitionKey.from_json(json["partitionKey"]) if "topLevelSite" in json["partitionKey"] else json["partitionKey"])
                 if json.get("partitionKey", None) is not None
                 else None
             ),
